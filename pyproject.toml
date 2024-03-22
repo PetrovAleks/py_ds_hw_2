@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "py_ds_hw_2"
+version = "0.1.0"
+description = ""
+authors = ["Petrov Oleksandr <rpm10b@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pylint = "^3.1.0"
+sqlalchemy = "^2.0.28"
+psycopg2 = "^2.9.9"
+faker = "^24.3.0"
+pymongo = "^4.6.2"
+
+[tool.poetry.scripts]
+start = "py_ds_hw_2.__init__:init"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
