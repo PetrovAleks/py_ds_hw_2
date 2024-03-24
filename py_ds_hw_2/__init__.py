@@ -32,10 +32,7 @@ def get_all_user_tasks(session: Session)-> list:
     tasks = session.query(Task).filter(Task.user_id == users[0].id).all()
     print(tasks)
 
-def update_user_task(session: Session, task_id:int, status:TaskStatus = "new")-> None:
-    task = session.query(Task).filter_by(id=task_id).first()
-    task.name =status
-    session.commit()    
+  
 
 def add_user_task(session: Session, user_id:int)-> None:
     create_task(session, fake.text(10),statuses[random_status] ,user_id )
@@ -69,6 +66,21 @@ def get_user_by_email_domain(session: Session, domain:str)-> list:
 def get_task_by_description(session: Session)-> list:
     tasks = session.query(Task).filter(Task.description != None).all()
     print(tasks)
+
+def delete_user(session: Session, user_id:int)-> None:
+    user = session.query(User).filter_by(id=user_id).first()
+    session.delete(user)
+    session.commit()
+
+def update_task(session: Session, task_id:int, status:TaskStatus = "new")-> None:
+    task = session.query(Task).filter_by(id=task_id).first()
+    task.name =status
+    session.commit()  
+
+def delete_task(session: Session, task_id:int)-> None:
+    task = session.query(Task).filter_by(id=task_id).first()
+    session.delete(task)
+    session.commit()
 
 def add_all()-> None:
     session = connection.create_session()
